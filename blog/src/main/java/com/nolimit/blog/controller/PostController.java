@@ -17,6 +17,7 @@ import com.nolimit.blog.dto.PostResponse;
 import com.nolimit.blog.service.PostService;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/posts")
@@ -31,7 +32,7 @@ public class PostController {
 
     @PostMapping
     public ResponseEntity<PostResponse> create(
-            @RequestBody PostRequest request) {
+            @Valid @RequestBody PostRequest request) {
 
         return ResponseEntity.ok(postService.create(request));
     }
@@ -52,7 +53,7 @@ public class PostController {
     @PutMapping("/{id}")
     public ResponseEntity<PostResponse> update(
             @PathVariable Long id,
-            @RequestBody PostRequest request) {
+            @Valid @RequestBody PostRequest request) {
 
         return ResponseEntity.ok(postService.update(id, request));
     }

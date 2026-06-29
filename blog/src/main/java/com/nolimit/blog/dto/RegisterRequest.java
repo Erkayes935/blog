@@ -1,14 +1,20 @@
 package com.nolimit.blog.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
 public class RegisterRequest {
 
+    @NotBlank (message = "Name tidak boleh kosong")
     private String name;
 
+    @Email (message = "Email tidak valid")
+    @NotBlank (message = "Email tidak boleh kosong")
     private String email;
 
+    @NotBlank (message = "Password tidak boleh kosong")
     private String password;
 
 }
